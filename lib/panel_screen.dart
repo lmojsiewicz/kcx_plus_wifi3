@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import './login_screen.dart';
 
 class PanelScreen extends StatefulWidget {
@@ -11,7 +12,97 @@ class PanelScreen extends StatefulWidget {
 
 class _PanelScreenState extends State<PanelScreen> {
   double _currentSliderValue = 0;
+  var data_from_kcx = '';
   @override
+
+  void initState() {
+    super.initState();
+    var ipek = widget.ip;
+    print(ipek+' 123');
+  }
+  Future <void> logout() async {
+    var ipek = widget.ip;
+    setState(() {
+    });
+    http.get(Uri.parse('http://' + ipek));
+  }
+  void offkcx() async{
+    var ipek = widget.ip;
+    http.get(Uri.parse('http://' + ipek + '/C=01760201040000000053bf'));
+    print(ipek);
+    setState(() {
+      data_from_kcx='OFF';
+    });
+  }
+  void ecokcx() async{
+    var ipek = widget.ip;
+    http.get(Uri.parse('http://' + ipek + '/C=0176020104010000005243'));
+    setState(() {
+      data_from_kcx='ECO';
+    });
+  }
+  void komfort() async{
+    var ipek = widget.ip;
+    http.get(Uri.parse('http://' + ipek + '/C=01100010000204000200005363'));
+    setState(() {
+      data_from_kcx='Komfort';
+    });
+  }
+
+  void maxkcx() async{
+    var ipek = widget.ip;
+    http.get(Uri.parse('http://' + ipek + '/C=017602010404000000528f'));
+    setState(() {
+      data_from_kcx='MAX';
+    });
+  }
+  void kal() async{
+    var ipek = widget.ip;
+    http.get(Uri.parse('http://' + ipek + '/C=01100010000204000800007361'));
+    setState(() {
+      data_from_kcx='Kal';
+    });
+  }
+  void minusthree() async{
+    var ipek = widget.ip;
+    print('m3');
+    http.get(Uri.parse('http://' + ipek + '/C=017602010500fdfffffe3f'));
+  }
+  void minustwo() async{
+    var ipek = widget.ip;
+    print('m2');
+    http.get(Uri.parse('http://' + ipek + '/C=017602010500feffff0e3f'));
+  }
+  void minusone() async{
+    var ipek = widget.ip;
+    print('m1');
+    http.get(Uri.parse('http://' + ipek + '/C=017602010500ffffff5fff'));
+
+
+  }
+  void zero() async{
+    var ipek = widget.ip;
+    print('zero');
+    http.get(Uri.parse('http://' + ipek + '/C=0176020105000000006e7f'));
+
+
+  }
+  void plusone() async{
+    var ipek = widget.ip;
+    print('p1');
+    http.get(Uri.parse('http://' + ipek + '/C=0176020105000100003fbf'));
+  }
+
+  void plustwo() async{
+    var ipek = widget.ip;
+    print('p2');
+    http.get(Uri.parse('http://' + ipek + '/C=017602010500020000cfbf'));
+  }
+  void plusthree() async{
+    var ipek = widget.ip;
+    print('p3');
+    http.get(Uri.parse('http://' + ipek + '/C=0176020105000300009e7f'));
+  }
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
@@ -207,12 +298,13 @@ class _PanelScreenState extends State<PanelScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        await logout();
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  LoginScreen(ipek1: widget.ip)),
+                                  LoginScreen()),
                         );
                       },
                       style: ElevatedButton.styleFrom(
