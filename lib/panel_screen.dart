@@ -492,7 +492,7 @@ class _PanelScreenState extends State<PanelScreen> {
                       ]),
                     ),
                     Container(
-                      padding: const EdgeInsets.only(top: 212.0, left: 150.0),
+                      padding: const EdgeInsets.only(top: 212.0, left: 152.0),
                       child: Row(children: [
                         const Text(
                           '   Nawiew: ',
